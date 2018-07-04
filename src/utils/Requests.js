@@ -29,7 +29,6 @@ export function addUrl(urls) {
         }).then((res) => {
             resolve(res);
         }).catch((err) => {
-            console.log('errr', err);
             reject(err);
         });
     });

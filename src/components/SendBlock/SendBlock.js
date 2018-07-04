@@ -1,7 +1,7 @@
 import React from 'react';
 import {InputGroup, InputGroupAddon, Input, Button, InputGroupText} from 'reactstrap';
-import {addUrl} from './utils/Requests';
 import {notify} from 'react-notify-toast';
+import {addUrl} from '../../utils/Requests';
 import 'bootstrap/dist/css/bootstrap.css';
 import './SendBlock.css';
 
@@ -9,23 +9,19 @@ export default class SendBlock extends React.Component {
     constructor(props) {
         super(props);
 
-        this.onClickSave = this.onClickSave.bind(this);
-        this.onBlurInput = this.onBlurInput.bind(this);
-        this.onChangeInput = this.onChangeInput.bind(this);
-
         this.state = {
             urlName: '',
             shortName: ''
         };
     }
 
-    onBlurInput(e) {
+    onBlurInput = (e) => {
         const target = e.target,
             value = target.value,
             name = target.name;
     }
 
-    onChangeInput(e) {
+    onChangeInput = (e) => {
         const target = e.target,
             value = target.value,
             name = target.name;
@@ -35,26 +31,29 @@ export default class SendBlock extends React.Component {
         });
     }
 
-    onClickSave() {
+    onClickSave = () => {
         const {urlName, shortName} = this.state;
         const {updateUrlsList} = this.props;
-
         const newUrlData = {
             'longurl' : urlName,
             'shortPartUserUrl': shortName
         };
 
+        if(!/^[a-z0-9]+$/i.test(shortName)) {
+            notify.show('A short part of the link name must contain letters and / or numbers', 'error');
+            this.setState({
+                shortName: ''
+            });
+            return
+        }
+
         addUrl(newUrlData).then(function (res) {
-            //console.log('res.data', res);
             if(res) {
                 updateUrlsList();
                 notify.show('Added to DB!', 'success');
             }
         }).catch(function (err) {
             if (err.response) {
-                //console.log(err.response.data.status);
-                //console.log(err.response.status);
-                //console.log(err.response.headers);
                 notify.show(err.response.data.status, 'error');
             }
         });

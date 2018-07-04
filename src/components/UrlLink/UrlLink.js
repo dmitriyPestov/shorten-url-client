@@ -1,22 +1,19 @@
 import React, { Component } from 'react';
 import {Button} from 'reactstrap';
-import {deleteUrl, redirectUrl} from './utils/Requests';
 import {notify} from 'react-notify-toast';
 import {UrlApi} from 'url';
-import {server} from './utils/config'
+import {server} from '../../utils/config'
+import {deleteUrl, redirectUrl} from '../../utils/Requests';
 import './UrlLink.css';
-import trash from './url-trash.svg';
+import trash from '../../img/url-trash.svg';
 
 export default class UrlLink extends Component {
   constructor(props) {
     super(props)
-    this.deleteUrl = this.deleteUrl.bind(this);
   }
 
-  deleteUrl() {
+  onClickDeleteUrl = () => {
     const {updateUrlsList, urlData} = this.props;
-    //Validations
-    let isError = false;
     const deleteIdUrl = urlData._id || '';
 
     deleteUrl(deleteIdUrl).then(function (res) {
@@ -32,11 +29,16 @@ export default class UrlLink extends Component {
       });
     }
 
+    getHostName(urlData) {
+      const parser = document.createElement('a');
+
+      parser.href = urlData.longurl;
+      return parser.hostname;
+    }
+
     render() {
       const {urlData, isOpen, toggleOpen} = this.props;
-      let parser = document.createElement('a');
-      parser.href = urlData.longurl;
-      let headerUrl = parser.hostname;
+      const headerUrl = this.getHostName(urlData);
       const shortLink = server + urlData.shortEntry;
 
       return (
@@ -56,7 +58,7 @@ export default class UrlLink extends Component {
                 <div className="count-redirect">
                   <img 
                     src={trash}
-                    onClick={this.deleteUrl}
+                    onClick={this.onClickDeleteUrl}
                     className="trash"
                     alt="clock"
                   />

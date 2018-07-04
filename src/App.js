@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import UrlLinkList from './UrlLinkList';
-import {getUrls} from './utils/Requests';
 import Notifications, {notify} from 'react-notify-toast';
 import axios from 'axios';
-import SendBlock from './SendBlock';
+import SendBlock from './components/SendBlock/SendBlock';
 import {server} from './utils/config';
-
-import logo from './logo.svg';
+import UrlLinkList from './components/UrlLinkList/UrlLinkList';
+import {getUrls} from './utils/Requests';
+import logo from './img/logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -24,12 +23,13 @@ class App extends Component {
       }]
   }
 
-  componentWillMount() {
+  componentDidMount() {
         this.updateUrlsList();
   }
 
   render() {
     const {allUrls} = this.state;
+
     return (
       <div className="App">
         <Notifications options={{zIndex: 5000}}/>
@@ -50,7 +50,7 @@ class App extends Component {
     );
   }
 
-  updateUrlsList = ()=> {
+  updateUrlsList = () => {
       const that = this;
       let error = null;
 
@@ -64,7 +64,6 @@ class App extends Component {
       });
 
       if (error) {
-        console.log('GetUrls error!');
         notify.show('GetUrls error!', 'error');
       }
   }
