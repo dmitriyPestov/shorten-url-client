@@ -1,2 +1,1 @@
-export const ENV = 'dev';
-export const devServer = 'http://localhost:3005/';
+export const server = 'https://lovely-hawaii-volcanoes-56940.herokuapp.com/';

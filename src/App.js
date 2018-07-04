@@ -4,14 +4,13 @@ import {getUrls} from './utils/Requests';
 import Notifications, {notify} from 'react-notify-toast';
 import axios from 'axios';
 import SendBlock from './SendBlock';
-import {ENV, devServer} from './utils/config';
+import {server} from './utils/config';
 
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-//axios.defaults.baseURL = 'https://rocky-crag-65521.herokuapp.com/';
-axios.defaults.baseURL = ENV === 'dev' ? devServer : window.location.href;
+axios.defaults.baseURL = server;
 
 class App extends Component {
   state = {

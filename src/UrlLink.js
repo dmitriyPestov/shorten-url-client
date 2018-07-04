@@ -3,7 +3,7 @@ import {Button} from 'reactstrap';
 import {deleteUrl, redirectUrl} from './utils/Requests';
 import {notify} from 'react-notify-toast';
 import {UrlApi} from 'url';
-import {ENV, devServer} from './utils/config'
+import {server} from './utils/config'
 import './UrlLink.css';
 import trash from './url-trash.svg';
 
@@ -37,7 +37,6 @@ export default class UrlLink extends Component {
       let parser = document.createElement('a');
       parser.href = urlData.longurl;
       let headerUrl = parser.hostname;
-      let server = ENV === 'dev' ? devServer : window.location.href;
       const shortLink = server + urlData.shortEntry;
 
       return (
