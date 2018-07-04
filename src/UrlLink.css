@@ -1,0 +1,67 @@
+.link-url {
+    text-align: left;
+    border: 1px solid lightblue;;
+    margin-bottom: 5px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3px;
+}
+
+.link-url_font {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+}
+
+.link-url_row {
+    min-width: 400px;
+}
+
+.url-info {
+    text-align: right;
+}
+
+.url-data {
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px;
+    text-overflow: ellipsis;
+}
+
+.headerurl {
+    padding: 10px 0 5px 10px;
+}
+
+.longurl,
+.shorturl {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 10px;
+}
+
+.time {
+    background: transparent url(./time.png) no-repeat scroll 0 0;
+    background-position: left;
+    margin-right: 20px;
+    padding-left: 20px;
+    font-size: 1em;
+    float: right;
+    text-align: right;
+}
+.trash {
+    height: 25px;
+    position: relative;
+    bottom: 2px;
+    right: -1px;
+    cursor: pointer;
+    padding-right: 7px;
+}
+
+.count-redirect {
+    padding: 10px;
+}
+
+.count-redirect_text {
+    padding: 6px 10px 6px 20px;
+}

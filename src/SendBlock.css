@@ -1,0 +1,22 @@
+.input-block {
+    height: 160px;;
+    padding: 15px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.input-url {
+    padding: 10px;
+}
+
+.short-user-part {
+    padding: 10px;
+}
+
+.optional-field {
+    position: relative;
+    bottom: 10px;
+    font-size: 14px;
+}
