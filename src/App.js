@@ -35,7 +35,7 @@ class App extends Component {
         <Notifications options={{zIndex: 5000}}/>
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo"/>
-          <div className="App-title">URL Shorten</div>
+          <div className="App-title">URL Shortener</div>
         </header>
         <div className="App-intro">
           <SendBlock
